@@ -1,0 +1,17 @@
+{
+  "name": "pixel_bot",
+  "version": "0.1.0",
+  "description": "Custom bot for the Pixel Pushers Discord Community",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "loteque",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0"
+  }
+}
