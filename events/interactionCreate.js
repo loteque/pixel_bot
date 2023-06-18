@@ -1,4 +1,4 @@
-const { Events } = require('discord.js');
+const { Events, Collection } = require('discord.js');
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -11,6 +11,7 @@ module.exports = {
 			console.error(`No command matching ${interaction.commandName} was found.`);
 			return;
 		}
+
 
 		const { cooldowns } = interaction.client;
 		if (!cooldowns.has(command.data.name)) {
