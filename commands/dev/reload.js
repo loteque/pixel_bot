@@ -1,7 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js')
+const path = require('node:path')
 
 module.exports = {
-    category: "dev",
+    category: path.basename(path.resolve(__dirname)),
     data: new SlashCommandBuilder()
         .setName('reload')
         .setDescription('Reloads a command.')
