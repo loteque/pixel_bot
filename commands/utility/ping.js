@@ -12,6 +12,5 @@ module.exports = {
         const sent = await interaction.reply({ content: 'Pinging...', fetchReply: true, ephemeral: true });
         await wait(2000);
         await interaction.editReply({ content: `Roundtrip latency: ${sent.createdTimestamp - interaction.createdTimestamp}ms`, ephemeral: true });
-        console.log(path.basename(path.resolve(__dirname)));
     },
 };
