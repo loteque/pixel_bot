@@ -7,6 +7,6 @@ module.exports = {
         .setName('ping')
         .setDescription('Replies With Pong!'),
     async execute(interation) {
-        await interation.reply('Whaddayawant!');
+        await interation.reply({ content: 'Pong!', ephemeral: true });
     },
 };
