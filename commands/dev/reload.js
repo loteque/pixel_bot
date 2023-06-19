@@ -4,7 +4,7 @@ const path = require('node:path')
 module.exports = {
     category: path.basename(path.resolve(__dirname)),
     data: new SlashCommandBuilder()
-        .setName('reload')
+        .setName(path.parse(path.basename(path.resolve(__filename))).name)
         .setDescription('Reloads a command.')
         .addStringOption(option =>
         option.setName('command')

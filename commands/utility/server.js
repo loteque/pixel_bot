@@ -4,7 +4,7 @@ const path = require('node:path')
 module.exports = {
     category: path.basename(path.resolve(__dirname)),
 		data: new SlashCommandBuilder()
-		.setName('server')
+		.setName(path.parse(path.basename(path.resolve(__filename))).name)
 		.setDescription('Provides information about the server.'),
 	async execute(interaction) {
 		// interaction.guild is the object representing the Guild in which the command was run

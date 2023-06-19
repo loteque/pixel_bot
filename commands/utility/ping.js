@@ -6,8 +6,8 @@ module.exports = {
     category: path.basename(path.resolve(__dirname)),
     cooldown: 5,
     data: new SlashCommandBuilder()
-        .setName('ping')
-        .setDescription('Get the bot latency in ms.'),
+    .setName(path.parse(path.basename(path.resolve(__filename))).name)
+    .setDescription('Get the bot latency in ms.'),
     async execute(interaction) {
         const sent = await interaction.reply({ content: 'Pinging...', fetchReply: true, ephemeral: true });
         await wait(2000);

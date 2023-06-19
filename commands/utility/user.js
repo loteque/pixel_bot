@@ -4,7 +4,7 @@ const path = require('node:path')
 module.exports = {
     category: path.basename(path.resolve(__dirname)),
 		data: new SlashCommandBuilder()
-		.setName('user')
+		.setName(path.parse(path.basename(path.resolve(__filename))).name)
 		.setDescription('Provides information about the user.'),
 	async execute(interaction) {
 		// interaction.user is the object representing the User who ran the command
