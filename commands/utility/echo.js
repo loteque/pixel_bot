@@ -15,6 +15,11 @@ module.exports = {
 	async execute(interaction) {
         const input = interaction.options.getString('input')
         const channel = interaction.options.getChannel('channel')
-		await channel.send({ content: `${input}`, ephemeral: true})
+        if ( channel ) {
+            await channel.send(input)
+            await interaction.reply({ content: 'echo resolved', ephemeral: true })
+        } else {
+            await interaction.reply(input)
+        }
 	},
 };
