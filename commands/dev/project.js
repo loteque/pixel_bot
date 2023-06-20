@@ -40,7 +40,12 @@ module.exports = {
                 type: ChannelType.GuildText,
                 parent: category.id,
             });
+            const projectChannel = interaction.guild.channels.cache.find(ch => ch.name == channelName)
 
+            await projectChannel.threads.create({
+                name: 'github-notify',
+                autoArchiveDuration: 10080
+            });
             await interaction.reply({ content: `project ${channelName} created at ${category.name}`, ephemeral: true });
 
         } else if (interaction.options.getSubcommand() === 'info') {
