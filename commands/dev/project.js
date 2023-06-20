@@ -37,16 +37,28 @@ module.exports = {
 
             await interaction.guild.channels.create({
                 name: channelName,
-                type: ChannelType.GuildText,
-                parent: category.id,
+                type: ChannelType.GuildForum,
+                parent: category.id
             });
             const projectChannel = interaction.guild.channels.cache.find(ch => ch.name == channelName)
-
             await projectChannel.threads.create({
                 name: 'github-notify',
-                autoArchiveDuration: 10080
+                autoArchiveDuration: 10080,
+                message: {
+                    content: 'Github Repository Updates'
+                }
             });
-            await interaction.reply({ content: `project ${channelName} created at ${category.name}`, ephemeral: true });
+            const thread = projectChannel.threads.cache.find(t => t.name === 'github-notify')
+            await projectChannel.createWebhook({
+                name: 'github-notify'
+            });
+            const webhooks = await projectChannel.fetchWebhooks();
+            const webhook = webhooks.find(wh => wh.name === 'github-notify')
+    
+            await interaction.reply({ 
+                content: `project ${channelName} created at ${category.name}\nWebhook URL: https://discord.com/api/webhooks/${webhook.id}/${webhook.token}/github?thread_id=${thread.id}`,
+                ephemeral: true 
+            });
 
         } else if (interaction.options.getSubcommand() === 'info') {
 			await interaction.reply({ content: `Channel Name: ${channel.name}\nChannel Category: ${channel.parent.name}`, ephemeral: true });
